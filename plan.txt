@@ -11,7 +11,17 @@ Calculate Speed: Write a functions to calculate distance traveled using x,y,z (p
 
 Test Accuracy: ??
 
-Differentiate Between Subjects: Compare the "error" after smoothing. Compare the z value in some way. 
+Differentiate Between Subjects: Compare the "error" after smoothing. Compare the z value in some way. Compare the speed of users (but people can walk at different speeds). Compare smoothness of acceleration?
 
 3) 
 Compare results: Estimate correct results (some data cleaning technique). Compare the 'error' in each result by using inferential stats. Compare the change in the smoothed data. 
+
+To Implement:
+clean_data_speed.py	- Takes a raw csv file and extract and clean it. (time, acceleration, speed, distance?, etc) (How to test accuracy?)
+
+calc_speed_result.py	- Takes a raw csv file and clean it. (time, raw data, smoothed data, merge different locations for the same person, etc.)
+
+speed_test.py	- Compare results from the cleaned data to answer (2)
+
+result_test.py	- Takes a clean csv file and test hypothesis for answer (3)
+
