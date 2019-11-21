@@ -1,0 +1,17 @@
+Question to answer with analysis:
+1. How does walking pace(steps/minute or similar) differ between people? Does it vary by age, gender, height?
+
+2. Can you calculate walking speed (m/s) from just the accelerometer? How accurate can you get? Can you then determine difference between subjects as above?
+
+3. Are the results better depending on where the phone is? Ankle vs pocket vs hand? Ankle above or below?
+
+How to answer:
+2) 
+Calculate Speed: Write a functions to calculate distance traveled using x,y,z (probably just x and y). 
+
+Test Accuracy: ??
+
+Differentiate Between Subjects: Compare the "error" after smoothing. Compare the z value in some way. 
+
+3) 
+Compare results: Estimate correct results (some data cleaning technique). Compare the 'error' in each result by using inferential stats. Compare the change in the smoothed data. 
