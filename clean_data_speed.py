@@ -8,9 +8,7 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 
 def prep_data(filename):
     """
-    Read data, 
-    Take only time, x, and y
-    Deal with 
+    Read file and convet
     """
     column_name = ['time', 'x_accel', 'y_accel', 'z_accel', 'total_accel']
     raw_data = pd.read_csv(filename, names=column_name, header=None) 
@@ -24,12 +22,28 @@ def prep_data(filename):
     
     accel = raw_data['total_accel'].tolist()
     time = raw_data['time'].tolist()
+    x = raw_data['x_accel'].tolist()
+    y = raw_data['y_accel'].tolist()
+    z = raw_data['z_accel'].tolist()
+        
+    # Lowess accelerations    
+    x_lowess = lowess(x, time, frac=0.05)
+    y_lowess = lowess(y, time, frac=0.05)
+    z_lowess = lowess(z, time, frac=0.05)
     
-    filtered = lowess(accel, time, frac=0.05)
-    plt.plot(time, accel, 'b.', linewidth=1, alpha=0.5)
-    plt.plot(filtered[:,0], filtered[:,1], 'r-', linewidth=2)
-    plt.show()
-    #plt.plot(time, accel, 'b.', alpha=0.2)
+    x_vel = np.trapz(x_lowess[:,1], time)
+    y_vel = np.trapz(y_lowess[:,1], time)
+    z_vel = np.trapz(z_lowess[:,1], time)
+    print(x_vel, y_vel, z_vel)
+    print(calc_distance((0,0,0), (x_vel, y_vel, z_vel)))    
+    lowess_columns = {'time':time,
+                      'x_lowess':x_lowess[:,1],
+                      'y_lowess':y_lowess[:,1],
+                      'z_lowess':z_lowess[:,1]
+                      }
+    data_lowess = pd.DataFrame(lowess_columns)
+    
+    # Kalman Filter accelerations
     
     """
     # Kalman Filter
