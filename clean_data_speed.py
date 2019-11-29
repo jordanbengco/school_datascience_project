@@ -25,23 +25,28 @@ def prep_data(filename):
     x = raw_data['x_accel'].tolist()
     y = raw_data['y_accel'].tolist()
     z = raw_data['z_accel'].tolist()
-        
+
     # Lowess accelerations    
-    x_lowess = lowess(x, time, frac=0.05)
-    y_lowess = lowess(y, time, frac=0.05)
-    z_lowess = lowess(z, time, frac=0.05)
-    
+    x_lowess = lowess(x, time, frac=0.09)
+    y_lowess = lowess(y, time, frac=0.09)
+    z_lowess = lowess(z, time, frac=0.09)
+
     x_vel = np.trapz(x_lowess[:,1], time)
     y_vel = np.trapz(y_lowess[:,1], time)
     z_vel = np.trapz(z_lowess[:,1], time)
+    
     print(x_vel, y_vel, z_vel)
-    print(calc_distance((0,0,0), (x_vel, y_vel, z_vel)))    
+    print(calc_distance((0,0), (x_vel, y_vel)))    
     lowess_columns = {'time':time,
                       'x_lowess':x_lowess[:,1],
                       'y_lowess':y_lowess[:,1],
                       'z_lowess':z_lowess[:,1]
                       }
     data_lowess = pd.DataFrame(lowess_columns)
+    plt.plot(time, x_lowess[:,1], "r-", linewidth=2, alpha=0.2)
+    plt.plot(time, y_lowess[:,1], "g-", linewidth=2, alpha=0.2)
+    plt.plot(time, z_lowess[:,1], "b-", linewidth=2, alpha=0.2)
+    plt.show()
     
     # Kalman Filter accelerations
     
@@ -71,7 +76,8 @@ def to_float(x):
     return float(x)
     
 def main():
-    prep_data("data/alex-hand30s.csv")
+    #prep_data("data/p2-pocket-1.csv")
+    prep_data("data/p1-ankle-1.csv")
 
     
 if __name__ == "__main__":

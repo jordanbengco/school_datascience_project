@@ -19,9 +19,9 @@ Compare results: Estimate correct results (some data cleaning technique). Compar
 To Implement:
 clean_data_speed.py	- Takes a raw csv file and extract and clean it. (time, acceleration, speed, distance?, etc) (How to test accuracy?)
 
-calc_speed_result.py	- Takes a raw csv file and clean it. (time, raw data, smoothed data, merge different locations for the same person, etc.)
+calc_speed_result.py	- Takes a raw csv file and clean it. (combine for the same person and calculate the std and mean of the x, y, z accelerations. Dataframe order is ankle, hand, pocket)
 
 speed_test.py	- Compare results from the cleaned data to answer (2)
 
-result_test.py	- Takes a clean csv file and test hypothesis for answer (3)
+result_test.py	- Takes a clean csv file and test hypothesis for answer (3) Test by measuring variance, mean, standared deviation and using t-test to see if there are similarities between specific users. Also classification by machine learning (Baysian classifier?)
 
