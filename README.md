@@ -1,8 +1,8 @@
 # sensor data project
 
-#Project for cmpt 353.
+# Project for cmpt 353.
 
-#Required Libraries:
+# Required Libraries:
 import sys
 import pandas as pd
 import numpy as np
@@ -22,7 +22,7 @@ from sklearn.pipeline import make_pipeline
 from statsmodels.nonparametric.smoothers_lowess import lowess
 
 
-#Order of Execution:
+# Order of Execution:
 We need to run both the py and ipynb since, even though its the same app, collects data differently on a Samsung device then an Apple device and the two programs clean data one for each.
 1. ./clean_data_results.py
 2. Run all clean_data_results.ipynb
@@ -31,7 +31,7 @@ We need to run both the py and ipynb since, even though its the same app, collec
 5. Run all results_test.ipynb
 
 
-#Report:
+# Report:
 - The problem you are addressing, particularly how you refined the provided data
 - The data that you use: how it was gathered, cleared, etc.
 - Techniques you used to analyse the data.
